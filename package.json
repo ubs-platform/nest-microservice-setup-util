@@ -1,6 +1,6 @@
 {
   "name": "@ubs-platform/nest-microservice-setup-util",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "private": false,
   "main": "dist/index.js",
   "author": "Unlimited Bundle Systems",
@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "publish": "npm run build && npm publish"
+    "build-publish": "npm run build && npm publish"
   },
   "peerDependencies": {
     "@nestjs/microservices": "^10.3.3"
