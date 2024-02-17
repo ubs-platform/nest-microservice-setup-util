@@ -2,6 +2,7 @@
   "name": "@ubs-platform/nest-microservice-setup-util",
   "version": "1.0.0",
   "private": false,
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "publish": "npm run build && npm publish"
