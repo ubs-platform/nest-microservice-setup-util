@@ -1,6 +1,6 @@
 {
   "name": "@ubs-platform/nest-microservice-setup-util",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "private": false,
   "main": "dist/index.js",
   "author": "Unlimited Bundle Systems",
@@ -9,6 +9,7 @@
     "type": "git",
     "url": "https://github.com/ubs-platform/nest-microservice-setup-util"
   },
+  "license": "MIT",
   "scripts": {
     "build": "tsc",
     "build-publish": "npm run build && npm publish"
