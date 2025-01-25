@@ -1,30 +1,19 @@
-import { Transport } from '@nestjs/microservices';
-import { randomUUID } from 'crypto';
+import { Transport } from "@nestjs/microservices";
+import { randomUUID } from "crypto";
 export const getMicroserviceConnection = (groupName) => {
-  const type = process.env['NX_MICROSERVICE_TYPE'] as 'KAFKA' | 'TCP' | 'RMQ';
+  const type = process.env["NX_MICROSERVICE_TYPE"] as "KAFKA" | "TCP";
 
   let microservice: Object | null = null;
-  if (type == 'KAFKA') {
+  if (type == "KAFKA") {
     microservice = {
       transport: Transport.KAFKA,
       options: {
         client: {
-          clientId: 'users',
-          brokers: [`${process.env['NX_KAFKA_URL']}`],
+          clientId: "users",
+          brokers: [`${process.env["NX_KAFKA_URL"]}`],
         },
         consumer: {
-          groupId: 'tk' + randomUUID(),
-        },
-      },
-    };
-  } else if (type == 'RMQ') {
-    microservice = {
-      transport: Transport.RMQ,
-      options: {
-        urls: [process.env['NX_RMQ_URL']],
-        queue: 'cats_queue',
-        queueOptions: {
-          durable: false,
+          groupId: "tk" + randomUUID(),
         },
       },
     };
@@ -32,21 +21,13 @@ export const getMicroserviceConnection = (groupName) => {
     microservice = {
       transport: Transport.TCP,
       options: {
-        host: process.env['NX_TCP_HOST'],
-        port: process.env['NX_TCP_PORT'],
+        host: process.env["NX_TCP_HOST"],
+        port: process.env["NX_TCP_PORT"],
       },
     };
   }
-
-  // return {
-  //   transport: Transport.TCP,
-  //   options: {
-  //     host: 'localhost',
-  //     port: 7177,
-  //   },
-  // };
   if (microservice == null) {
-    throw 'Microservice type not recognized';
+    throw "Microservice type not recognized";
   }
   return microservice;
 };
